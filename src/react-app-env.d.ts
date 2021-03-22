@@ -9,6 +9,7 @@ interface SDSContext {
     gotaplatsen: boolean;
     korsvagen: boolean;
     brunnsparken: boolean;
+    valand: boolean;
     vasaplatsen: boolean;
     styrostall: boolean;
     hjalmarbranting: boolean;

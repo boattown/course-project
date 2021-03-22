@@ -51,6 +51,7 @@ import img48 from "./images/Bild48.PNG"
 import img49 from "./images/Bild49.PNG"
 import img50 from "./images/Bild50.PNG"
 import img51 from "./images/Bild51.png"
+import img52 from "./images/Bild52.png"
 
 
 function say(text: string): Action<SDSContext, SDSEvent> {
@@ -376,8 +377,9 @@ export const dmMachine: MachineConfig<SDSContext, any, SDSEvent> = ({
                     states: {
                         checkOrigin: {
                             on: {'': [
-                                { target: "prompt1", cond: (context) => context.gotaplatsen === true },
-                                { target: "prompt2", cond: (context) => context.korsvagen === true }]}
+                                { target: "prompt1", cond: (context) => context.gotaplatsen === true && context.valand === false },
+                                { target: "prompt2", cond: (context) => context.korsvagen === true },
+                                { target: "prompt3", cond: (context) => context.valand === true }]}
                         },
                         prompt1: {
                             entry: [assign((context) => { return { img : img25} }), say("You jump on the first bus you see. After just a few stops, you get off at Brunnsparken. You look around and see that the trams 6 and 1 depart from here. Which one do you take?")],
@@ -385,6 +387,10 @@ export const dmMachine: MachineConfig<SDSContext, any, SDSEvent> = ({
                         },
                         prompt2: {
                             entry: [assign((context) => { return { img : img26} }), say("Since you don’t feel like running in public, you watch tram 6 depart. Instead, you take tram 4 to Brunnsparken and decide to change to another tram line there. When you reach Brunnsparken, you get off the tram and look around. You see that the trams 6 and 1 depart from here. Which one do you take?")],
+                            on: { ENDSPEECH: "ask" }
+                        },
+                        prompt3: {
+                            entry: [assign((context) => { return { img : img52} }), say("You jump on tram number 4 and get off at Brunnsparken, where you decide to change tram. You see that the trams 6 and 1 depart from here. Which one do you take?")],
                             on: { ENDSPEECH: "ask" }
                         },
                         ask: {
@@ -395,8 +401,8 @@ export const dmMachine: MachineConfig<SDSContext, any, SDSEvent> = ({
                                 id: 'rasa',
                                 src: (context, event) => nluRequest(context.recResult),
                                 onDone: [
-                                    { target: "#root.dm.game.jarntorget.prompt2", cond: (context, event) => event.data.intent["name"] === "one" || context.recResult.includes("1") },
-                                    { target: "#root.dm.game.hjalmarbranting", cond: (context, event) => event.data.intent["name"] === "six" || context.recResult.includes("6") },
+                                    { target: "#root.dm.game.jarntorget.prompt2", cond: (context, event) => context.recResult.includes("1") || context.recResult.includes("one") },
+                                    { target: "#root.dm.game.hjalmarbranting", cond: (context, event) => context.recResult.includes("6") || context.recResult.includes("six")},
                                     { target: "#root.dm.game.brunnsparken.repeat1", cond: (context, event) => event.data.intent["name"] !== "one" && event.data.intent["name"] !== "six" && event.data.intent["name"] !== "help" && event.data.intent["name"] !== "quit" && event.data.intent["name"] !== "repeat"},
                                     { target: "#root.dm.repeat", cond: (context, event) => event.data.intent["name"] === "repeat" },                    
                                     { target: "#root.dm.help", cond: (context, event) => event.data.intent["name"] === "help" },
@@ -414,7 +420,7 @@ export const dmMachine: MachineConfig<SDSContext, any, SDSEvent> = ({
                     initial: "prompt",
                     on: {
                         RECOGNISED: {
-                            target: ".rasa",
+                            target: ".rasa", actions: assign((context) => { return { valand: true } })
                         }
                     },
                     states: {
