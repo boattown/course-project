@@ -6,8 +6,14 @@ interface SDSContext {
     recResult: string;
     nluData: any;
     ttsAgenda: string;
-    query: string;
-    snippet: string
+    gotaplatsen: boolean;
+    korsvagen: boolean;
+    brunnsparken: boolean;
+    vasaplatsen: boolean;
+    styrostall: boolean;
+    hjalmarbranting: boolean;
+    kortedala: boolean;
+    img: any;
 }
 
 type SDSEvent =

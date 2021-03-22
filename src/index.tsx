@@ -4,7 +4,7 @@ import * as ReactDOM from "react-dom";
 import { Machine, assign, send, State } from "xstate";
 import { useMachine, asEffect } from "@xstate/react";
 import { inspect } from "@xstate/inspect";
-import { dmMachine } from "./dmColourChanger";
+import { dmMachine } from "./dmGame";
 
 
 inspect({
@@ -13,6 +13,10 @@ inspect({
 });
 
 import { useSpeechSynthesis, useSpeechRecognition } from 'react-speech-kit';
+import img1 from "./images/Bild1.PNG";
+
+let startImage = img1;
+
 
 
 const machine = Machine<SDSContext, any, SDSEvent>({
@@ -125,7 +129,7 @@ function App() {
         devTools: true,
         actions: {
             recStart: asEffect(() => {
-                console.log('Ready to receive a color command.');
+                console.log('Ready to receive a command.');
                 listen({
                     interimResults: false,
                     continuous: true
@@ -134,10 +138,6 @@ function App() {
             recStop: asEffect(() => {
                 console.log('Recognition stopped.');
                 stop()
-            }),
-            changeColour: asEffect((context) => {
-                console.log('Repainting...');
-                document.body.style.background = context.recResult;
             }),
             ttsStart: asEffect((context, effect) => {
                 console.log('Speaking...');
@@ -154,24 +154,54 @@ function App() {
         }
     });
 
-
-    return (
-        <div className="App">
+    if (current.context.img) {
+        return (
+            <div className="App">
+            <div>
+            <img src={current.context.img}/>
+                </div>
+                <div>
             <ReactiveButton state={current} onClick={() => send('CLICK')} />
-        </div>
-    )
-};
+                </div>
+            </div>
+        )
+    } else {
+        return (
+        
+            <div className="App">
+            <div>
+            <img src={startImage}/>
+                </div>
+                <div>
+            <ReactiveButton state={current} onClick={() => send('CLICK')} />
+                </div>
+            </div>
+        )
+
+
+    /// return (
+        
+    ///    <div className="App">
+	///    <div>
+	///	<img src={current.context.img}/>
+    ///        </div>
+    ///        <div>
+	///	<ReactiveButton state={current} onClick={() => send('CLICK')} />
+    ///        </div>
+    ///    </div>
+    ///)
+}};
 
 
 
 /* RASA API
  *  */
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
-const rasaurl = 'https://rasa-nlu-api-00.herokuapp.com/model/parse'
-const nluRequest = (text: string) =>
+const rasaurl = 'https://course-project-klara.herokuapp.com/model/parse'
+export const nluRequest = (text: string) =>
     fetch(new Request(proxyurl + rasaurl, {
         method: 'POST',
-        headers: { 'Origin': 'http://maraev.me' }, // only required with proxy
+        headers: { 'Origin': 'http://localhost:3000/course-project' }, // only required with proxy
         body: `{"text": "${text}"}`
     }))
         .then(data => data.json());

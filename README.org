@@ -1,4 +1,7 @@
-* Colour changer (React + xstate + Webspeech API)
+* MLT MAZE GAME (React + xstate + Webspeech API)
+LT2216
+VT -21
+
 To run:
 #+begin_src sh
   npm install
