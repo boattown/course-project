@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/course-project/static/css/main.dcf2b28c.chunk.css",
-    "main.js": "/course-project/static/js/main.bab06e15.chunk.js",
-    "main.js.map": "/course-project/static/js/main.bab06e15.chunk.js.map",
+    "main.js": "/course-project/static/js/main.afa875ea.chunk.js",
+    "main.js.map": "/course-project/static/js/main.afa875ea.chunk.js.map",
     "runtime-main.js": "/course-project/static/js/runtime-main.2a35cdcc.js",
     "runtime-main.js.map": "/course-project/static/js/runtime-main.2a35cdcc.js.map",
     "static/js/2.47aea4d8.chunk.js": "/course-project/static/js/2.47aea4d8.chunk.js",
@@ -57,6 +57,7 @@
     "static/media/Bild5.cdbf1773.PNG": "/course-project/static/media/Bild5.cdbf1773.PNG",
     "static/media/Bild50.561ed482.PNG": "/course-project/static/media/Bild50.561ed482.PNG",
     "static/media/Bild51.f86a7cfb.png": "/course-project/static/media/Bild51.f86a7cfb.png",
+    "static/media/Bild52.789da630.png": "/course-project/static/media/Bild52.789da630.png",
     "static/media/Bild6.a3128ef3.PNG": "/course-project/static/media/Bild6.a3128ef3.PNG",
     "static/media/Bild7.271df7b9.PNG": "/course-project/static/media/Bild7.271df7b9.PNG",
     "static/media/Bild8.8313e851.PNG": "/course-project/static/media/Bild8.8313e851.PNG",
@@ -66,6 +67,6 @@
     "static/js/runtime-main.2a35cdcc.js",
     "static/js/2.47aea4d8.chunk.js",
     "static/css/main.dcf2b28c.chunk.css",
-    "static/js/main.bab06e15.chunk.js"
+    "static/js/main.afa875ea.chunk.js"
   ]
 }
