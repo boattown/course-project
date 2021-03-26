@@ -1,0 +1,115 @@
+version: "2.0"
+
+nlu:
+- intent: affirm
+  examples: |
+    - yes
+    - yeah
+    - I do
+    - catch it
+    - run to catch it
+    - I run to catch it
+    - I hurry
+    - definately
+    - sure
+
+- intent: deny
+  examples: |
+    - no
+    - I don't
+    - I don't think so
+    - no way
+    - not really
+    - nope
+
+- intent: help
+  examples: |
+    - help
+    - SOS
+    - i need help
+    - help me
+
+- intent: quit
+  examples: |
+    - quit
+    - stop
+    - exit
+
+- intent: repeat
+  examples: |
+    - repeat
+    - repeat the question
+    - what was the question
+    - can you repeat
+
+- intent: poseidon
+  examples: |
+    - head towards poseidon
+    - walk towards poseidon
+    - beside him
+    - towards poseidon
+    - poseidon
+    - walk ahead
+    - go straight
+    - potato
+
+- intent: stairs
+  examples: |
+    - head down the stairs
+    - go down the stairs
+    - the stairs
+    - take the stairs
+    - go downhill
+
+- intent: bus
+  examples: |
+    - bus
+    - a bus
+    - jump on a bus
+    - take a bus
+    - i jump on the bus
+    - i take the bus
+    - the bus
+
+- intent: tram
+  examples: |
+    - tram
+    - take the tram
+    - take a tram
+    - the tram
+
+- intent: six
+  examples: |
+    - six
+    - number six
+    - tram six
+    - i take number six
+
+- intent: one
+  examples: |
+    - one
+    - number one
+    - tram one
+    - i take number one
+
+- intent: walk
+  examples: |
+    - walk
+    - continue walking
+    - continue to walk
+    - i want to walk
+    - let's walk
+    - walk down the street
+
+- intent: bike
+  examples: |
+    - bike
+    - the bike
+    - a bike
+    - take the bike
+    - take a bike
+    - i take the bike
+    - i take a bike
+    - let's take the bike
+    - let's take a bike
+    - i want to take the bike
