@@ -2,6 +2,10 @@
 LT2216
 VT -21
 
+Link to the deployed app: https://boattown.github.io/course-project/
+
+I added the file nlu.yml with the intents I used to train the Rasa model, as well as the PowerPoint presentation.
+
 To run:
 #+begin_src sh
   npm install
